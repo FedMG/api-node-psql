@@ -12,7 +12,7 @@ app.use(cors())
 app.use(morgan('dev'))
 
 // routes
-app.use('/tasks', tasks)
+app.use('/characters', tasks)
 
 app.use(notFound);
 
