@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.route('/').get(getAllCharacters).post(createCharacter)
 router
-  .route("/:id")
+  .route('/:id')
   .get(getCharacter)
   .patch(updateCharacter)
   .delete(deleteCharacter)

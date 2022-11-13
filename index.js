@@ -14,7 +14,7 @@ app.use(morgan('dev'))
 // routes
 app.use('/characters', tasks)
 
-app.use(notFound);
+app.use(notFound)
 
 const PORT = process.env.PORT
 app.listen(PORT, console.log(`App listen in port ${PORT}`))
