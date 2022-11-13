@@ -3,6 +3,7 @@ import cors from 'cors'
 import express from 'express'
 
 import tasks from './routes/tasks.js'
+import notFound from './middlewares/not-found.js'
 
 const app = express()
 
@@ -12,6 +13,8 @@ app.use(morgan('dev'))
 
 // routes
 app.use('/tasks', tasks)
+
+app.use(notFound);
 
 const PORT = process.env.PORT
 app.listen(PORT, console.log(`App listen in port ${PORT}`))
