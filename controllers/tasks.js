@@ -1,5 +1,7 @@
 import { pool } from '../db/pool.js'
 import { getTableDetails } from '../utils/table-details.js'
+import { createCustomError } from "../errors/custom-error.js"
+
 
 export const getAllCharacters = async (_, res) => {
   try {
@@ -27,3 +29,18 @@ export const createCharacter = async (req, res) => {
     res.status(500).send(error)
   }
 }
+
+export const getCharacter = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const character = await pool.query("SELECT * FROM dbz_characters WHERE id = $1", [id]);
+    
+    if (!character.rows.length) {
+      return next(createCustomError(`The character with id : ${id}`, 404));
+    }
+    res.status(200).json(character.rows);
+    
+  } catch (error) {
+    console.log(error);
+  }
+};
