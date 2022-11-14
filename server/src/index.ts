@@ -18,4 +18,4 @@ app.use(notFound)
 app.use(errorHandler)
 
 const PORT = process.env.PORT
-app.listen(PORT, console.log(`App listen in port ${PORT}`))
+app.listen(PORT, () => console.log(`App listen in port ${PORT}`))
