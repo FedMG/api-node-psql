@@ -3,12 +3,12 @@ import { createCustomError } from '../errors/custom-error.js'
 import { isStringWithLength } from '../utils/validators.js'
 import { errorListener } from '../middlewares/error-listener.js'
 
-export const getAllCharacters = errorListener(async (_, res) => {
+export const getAllCharacters = errorListener(async (_: any, res: any) => {
   const table = await pool.query('SELECT * FROM dbz_characters')
   res.status(200).json(table.rows)
 })
 
-export const createCharacter = errorListener(async (req, res, next) => {
+export const createCharacter = errorListener(async (req: any, res: any, next: any) => {
   const { name } = req.body
 
   if (isStringWithLength(name)) {
@@ -22,7 +22,7 @@ export const createCharacter = errorListener(async (req, res, next) => {
   res.status(200).json(table.rows)
 })
 
-export const getCharacter = errorListener(async (req, res, next) => {
+export const getCharacter = errorListener(async (req: any, res: any, next: any) => {
   const { id } = req.params
   const table = await pool.query('SELECT * FROM dbz_characters WHERE id = $1', [id])
 
@@ -32,7 +32,7 @@ export const getCharacter = errorListener(async (req, res, next) => {
   res.status(200).json(table.rows)
 })
 
-export const updateCharacter = errorListener(async (req, res, next) => {
+export const updateCharacter = errorListener(async (req: any, res: any, next: any) => {
   const { id } = req.params
   const { name } = req.body
 
@@ -49,7 +49,7 @@ export const updateCharacter = errorListener(async (req, res, next) => {
   res.status(200).json(table.rows)
 })
 
-export const deleteCharacter = errorListener(async (req, res, next) => {
+export const deleteCharacter = errorListener(async (req: any, res: any, next: any) => {
   const { id } = req.params
   const table = await pool.query('DELETE FROM dbz_characters WHERE id = $1', [id])
 

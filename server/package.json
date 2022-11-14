@@ -5,8 +5,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node index.js",
-    "lint": "standard --fix"
+    "dev": "node src/index",
+    "start": "npx tsc --project tsconfig.build.json",
+    "preview": "node build/index",
+    "tsc": "tsc",
+    "lint": "ts-standard --fix"
   },
   "repository": {
     "type": "git",
@@ -30,9 +33,15 @@
     "@types/morgan": "^1.9.3",
     "@types/pg": "^8.6.5",
     "morgan": "^1.10.0",
-    "standard": "^17.0.0"
+    "ts-standard": "^12.0.1",
+    "typescript": "^4.8.4"
   },
   "eslintConfig": {
-    "extends": "./node_modules/standard/eslintrc.json"
+   "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "extends": [
+      "./node_modules/ts-standard/eslintrc.json"
+    ]
   }
 }

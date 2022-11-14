@@ -1,6 +1,6 @@
 import { CustomError } from '../errors/custom-error.js'
 
-const errorHandler = (err, req, res, next) => {
+const errorHandler = (err: any, _req: any, res: any, _next: any) => {
   if (err instanceof CustomError) {
     return res.status(err.status).json({ msg: err.message })
   }
