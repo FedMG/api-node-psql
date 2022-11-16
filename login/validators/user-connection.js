@@ -1,4 +1,4 @@
-export const validateNewUser = ({ name, email, password, password2 }) => {
+export const validateDataUser = ({ name, email, password, password2 }) => {
   const errors = [];
   if (!name || !email || !password) {
     errors.push({ message: "Please enter all fields" });

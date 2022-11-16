@@ -1,12 +1,12 @@
 export const errorListener = (callback) => {
-  return async ($1, $2, $3) => {
+  return async ($1 = null, $2 = null, $3 = null) => {
     try {
-      await callback($1, $2, $3);
+      return await callback($1, $2, $3);
     } catch (error) {
-      if ($3) {
+      if (typeof $3 === 'function') {
         return $3(error)
       }
-      throw new Error("ErrorListener: ", error)
+      throw error
     }
   };
 };
