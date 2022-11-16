@@ -3,7 +3,7 @@ export const isUserAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
    console.log('redirect 1')
     
-    return res.redirect('/users/dashboard')
+    return res.redirect('/user/dashboard')
   }
   console.log('next 1')
   next()
@@ -17,5 +17,5 @@ export const userIsNotAuthenticated = (req, res, next) => {
      return next()
    }
    console.log('redirect 2')
-   res.redirect('/users/login')
+   res.redirect('/user/login')
 }

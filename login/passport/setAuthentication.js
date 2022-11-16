@@ -1,15 +1,15 @@
 import passport from "passport";
 
 export const setAuthentication = passport.authenticate("local", {
-  successRedirect: "/users/dashboard",
-  failureRedirect: "/users/login",
+  successRedirect: "/user/dashboard",
+  failureRedirect: "/user/login",
   failureFlash: true,
 });
 
 
 // export const setAuthentication2 = (req, res) => {
 //   req.session.save(() => {
-//     res.redirect("/users/dashboard");
+//     res.redirect("/user/dashboard");
 //   });
 // };
 
